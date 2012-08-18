@@ -11,11 +11,8 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 	QGridLayout *layout = new QGridLayout(this);
 	layout->addWidget(dust);
 
-	//prepare x-coordinates
-	for (int i=0; i < 1000; i++){
-		x.push_back(i);
-	}
-
+	//prepare x-coordinates NEJ set width of wave
+	x = 1000;
 	//fire a timer which will update time
 	time = 0;
 	QTimer *timer = new QTimer(this);
@@ -29,8 +26,8 @@ void Ocean::paintEvent(QPaintEvent *){
 
 	//create ocean path
 	QPainterPath path;
-	for (int i=0; i < x.size(); i++){
-		path.lineTo(x[i], 100+50*cos(0.03*x[i]-time));
+	for (int i=0; i < x; i++){
+		path.lineTo(i, 100+50*cos(0.03*i-time));
 	}
 	painter.drawPath(path);
 }

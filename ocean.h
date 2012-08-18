@@ -2,7 +2,6 @@
 #define OCEAN_H_DEFINED
 
 #include <QWidget>
-#include <QVector>
 
 class Ocean : public QWidget{
 	Q_OBJECT
@@ -15,7 +14,7 @@ class Ocean : public QWidget{
 
 	private:
 		//ocean coordinates
-		QVector<double> x;
+		int x;
 		double time;
 };
 
