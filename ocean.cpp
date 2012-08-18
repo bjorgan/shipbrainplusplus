@@ -12,7 +12,7 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 	layout->addWidget(dust);
 
 	//prepare x-coordinates
-	for (int i=0; i < 300; i++){
+	for (int i=0; i < 1000; i++){
 		x.push_back(i);
 	}
 
@@ -25,7 +25,7 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 
 void Ocean::paintEvent(QPaintEvent *){
 	QPainter painter(this);
-	painter.setPen(Qt::blue);
+	painter.setPen(Qt::red);
 
 	//create ocean path
 	QPainterPath path;
