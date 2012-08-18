@@ -10,9 +10,7 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 	QLabel *dust = new QLabel("dette er en sjø....");
 	QGridLayout *layout = new QGridLayout(this);
 	layout->addWidget(dust);
-	resize(1000,1000);
-	//prepare x-coordinates NEJ set width of wave
-	x = width();
+	
 	//fire a timer which will update time
 	time = 0;
 	QTimer *timer = new QTimer(this);
@@ -21,12 +19,15 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 }
 
 void Ocean::paintEvent(QPaintEvent *){
+	//prepare x-coordinates NEJ set width of wave
+	x = width();
+
 	QPainter painter(this);
 	painter.setPen(Qt::red);
 	
 	//create ocean path
-	QPoint start (0,1000);
-	QPoint end (1000,1000);
+	QPoint start (0,height());
+	QPoint end (width(),height());
 	QPainterPath path (start);
 	for (int i=0; i < x; i++){
 		path.lineTo(i,400+ 50*cos(0.03*i-time));
