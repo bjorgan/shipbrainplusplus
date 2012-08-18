@@ -23,11 +23,17 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 void Ocean::paintEvent(QPaintEvent *){
 	QPainter painter(this);
 	painter.setPen(Qt::red);
-
+	
 	//create ocean path
 	QPainterPath path;
 	for (int i=0; i < x; i++){
-		path.lineTo(i, 100+50*cos(0.03*i-time));
+		path.lineTo(i,400+ 50*cos(0.03*i-time));
+	}
+	QLineF hav (0, 400+50*cos(0.03*0-time),5, 600);
+	painter.drawLine(hav);
+	for (int i = 1; i < x; ++i) {
+		hav.setLine(i, 400+50*cos(0.03*i-time), i, 600);
+		painter.drawLine(hav);
 	}
 	painter.drawPath(path);
 }
