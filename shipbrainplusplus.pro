@@ -6,7 +6,15 @@ TEMPLATE = app
 TARGET = 
 DEPENDPATH += .
 INCLUDEPATH += .
+CONFIG += release
 
 # Input
 HEADERS += mainwindow.h ocean.h
 SOURCES += main.cpp mainwindow.cpp ocean.cpp
+
+
+release:DESTDIR = release
+release:OBJECTS_DIR = release/.obj
+release:MOC_DIR = release/.moc
+release:RCC_DIR = release/.rcc
+release:UI_DIR = release/.ui
