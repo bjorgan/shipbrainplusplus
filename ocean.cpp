@@ -7,10 +7,6 @@
 #include <QTimer>
 
 Ocean::Ocean(QWidget *parent) : QWidget(parent){
-	QLabel *dust = new QLabel("dette er en sjø....");
-	QGridLayout *layout = new QGridLayout(this);
-	layout->addWidget(dust);
-	
 	//fire a timer which will update time
 	time = 0;
 	QTimer *timer = new QTimer(this);
@@ -19,7 +15,7 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 }
 
 void Ocean::paintEvent(QPaintEvent *){
-	//prepare x-coordinates NEJ set width of wave
+
 	x = width();
 
 	QPainter painter(this);
