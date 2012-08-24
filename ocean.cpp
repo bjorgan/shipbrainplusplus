@@ -5,13 +5,24 @@
 #include <QPainterPath>
 #include <cmath>
 #include <QTimer>
+#include <QPushButton>
 
+void Ocean::flipTimeState() {
+	if (timeIsRunning)
+		timeIsRunning = false;
+	else
+		timeIsRunning = true;
+}
 Ocean::Ocean(QWidget *parent) : QWidget(parent){
 	//fire a timer which will update time
 	time = 0;
+	timeIsRunning = true;
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 	timer->start(100);
+	startstop = new QPushButton("Start/Stop", this);
+	startstop->setGeometry(50,40,75,30);
+	connect(startstop,SIGNAL(clicked()), this, SLOT(flipTimeState()));
 }
 
 void Ocean::paintEvent(QPaintEvent *){
@@ -29,20 +40,13 @@ void Ocean::paintEvent(QPaintEvent *){
 		path.lineTo(i,400+ 50*cos(0.03*i-time));
 	}
 	path.lineTo(end);
-	/*
-	QLineF hav (0, 400+50*cos(0.03*0-time),5, 600);
-	painter.drawLine(hav);
-	for (int i = 1; i < x; ++i) {
-		hav.setLine(i, 400+50*cos(0.03*i-time), i, 600);
-		painter.drawLine(hav);
-	}
-	*/
-	QBrush brush (Qt::red, Qt::DiagCrossPattern);
+	QBrush brush (Qt::red, Qt::Dense6Pattern);
 	painter.setBrush(brush);
 	painter.drawPath(path);
 }
 
 void Ocean::updateTime(){
-	time += 0.1;
+	if (timeIsRunning)
+		time += 0.1;
 	update();
 }
