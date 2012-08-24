@@ -6,16 +6,9 @@
 #include <cmath>
 #include <QTimer>
 
-void Ocean::flipTimeState() {
-	if (timeIsRunning)
-		timeIsRunning = false;
-	else
-		timeIsRunning = true;
-}
 Ocean::Ocean(QWidget *parent) : QWidget(parent){
 	//fire a timer which will update time
 	time = 0;
-	timeIsRunning = true;
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 	timer->start(100);
@@ -41,8 +34,7 @@ void Ocean::paintEvent(QPaintEvent *){
 	painter.drawPath(path);
 }
 
-void Ocean::updateTime(){
-	if (timeIsRunning)
-		time += 0.1;
+void Ocean::updateTime {
+	time += 0.1;
 	update();
 }
