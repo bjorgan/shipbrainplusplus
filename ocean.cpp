@@ -5,7 +5,6 @@
 #include <QPainterPath>
 #include <cmath>
 #include <QTimer>
-#include <QPushButton>
 
 void Ocean::flipTimeState() {
 	if (timeIsRunning)
@@ -20,9 +19,6 @@ Ocean::Ocean(QWidget *parent) : QWidget(parent){
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
 	timer->start(100);
-	startstop = new QPushButton("Start/Stop", this);
-	startstop->setGeometry(50,40,75,30);
-	connect(startstop,SIGNAL(clicked()), this, SLOT(flipTimeState()));
 }
 
 void Ocean::paintEvent(QPaintEvent *){
