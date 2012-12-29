@@ -34,7 +34,7 @@ void Ocean::paintEvent(QPaintEvent *){
 	painter.drawPath(path);
 }
 
-void Ocean::updateTime {
+void Ocean::updateTime() {
 	time += 0.1;
 	update();
 }
