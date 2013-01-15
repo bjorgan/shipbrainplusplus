@@ -7,7 +7,7 @@
 #include <QTimer>
 
 Ocean::Ocean(QWidget *parent) : QWidget(parent){
-	//fire a timer which will update time
+	// initiate a timer which will update time
 	time = 0;
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
@@ -21,7 +21,7 @@ void Ocean::paintEvent(QPaintEvent *){
 	QPainter painter(this);
 	painter.setPen(Qt::red);
 	
-	//create ocean path
+	// create ocean path
 	QPoint start (0,height());
 	QPoint end (width(),height());
 	QPainterPath path (start);
