@@ -17,4 +17,10 @@ class Ocean : public QWidget{
 		double time;
 };
 
+double waveSpectrum(float w);
+
+void initializeWaves();
+
+double waterVal(float x, float t);
+
 #endif
