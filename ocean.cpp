@@ -96,6 +96,6 @@ void Ocean::paintEvent(QPaintEvent *){
 }
 
 void Ocean::updateTime() {
-	time += 0.1;
+	time += 1;
 	update();
 }
