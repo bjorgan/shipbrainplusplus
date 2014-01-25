@@ -48,7 +48,7 @@ double waveSpectrum(float w){
 	float c = (wp/w)*(wp/w)*(wp/w)*(wp/w)*(wp/w);
 	float d = exp(-5.0/4.0*(wp/w)*(wp/w)*(wp/w)*(wp/w));
 	float e = (1-0.287*log(gamma));
-	float f = pow(gamma, exp(-(pow((w/wp)-1, 2)/(2*sigma*sigma))));
+	float f = pow(gamma, exp(-(((w/wp)-1)*(w/wp - 1))/(2*sigma*sigma)));
 
 	return a*b*c*d*e*f;
 }
@@ -69,7 +69,7 @@ double waterVal(float x, float t){
 	for (int i=0; i < N; i++){
 		float wi = a+i*dw;
 		float ki = wi*wi/g;
-		retval += sqrt(2*waveSpectrum(wi)*dw)*sin(wi*t - ki*x + ei[i]);
+		retval += sqrt(2*waveSpectrum(wi)*dw)*sin(wi*(t-10000) - ki*x + ei[i]);
 	}
 	return retval;
 }
@@ -86,7 +86,9 @@ void Ocean::paintEvent(QPaintEvent *){
 	QPoint start (0,height());
 	QPoint end (width(),height());
 	QPainterPath path (start);
-	for (int i=0; i < x; i++){
+
+	float step = x/(1000.0f);
+	for (float i=0; i < x; i += step){
 		path.lineTo(i,120+waterVal(i, time));
 	}
 	path.lineTo(end);
