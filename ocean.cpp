@@ -55,7 +55,6 @@ double waveSpectrum(float w) {
     sigma = 0.09;
   }
 	
-        
   float a = 5.0/(32*PI);
   float b = Hs*Hs*Tp;
   float c = pow((wp/w), 5);
@@ -80,6 +79,7 @@ void initializeWaves(){
   }
 }
 
+<<<<<<< HEAD
 double waterVal(float x, float t) {
   /* Computes the height of the water at point x at time t */
   float a = 0;
